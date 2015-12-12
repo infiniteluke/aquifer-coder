@@ -18,8 +18,10 @@ module.exports = function(Aquifer, AquiferCoderConfig) {
       _            = require('lodash'),
       path         = require('path'),
       fs           = require('fs-extra'),
-      syncExec     = require('sync-exec');
-
+      syncExec     = require('sync-exec'),
+      promise   = require('promised-io/promise'),
+      Deferred  = promise.Deferred;
+      
   // Turn any passed-in paths into full paths.
   if (AquiferCoderConfig.hasOwnProperty('eslintrc')) {
     AquiferCoderConfig.eslintrc = path.join(Aquifer.projectDir, AquiferCoderConfig.eslintrc);
@@ -56,6 +58,17 @@ module.exports = function(Aquifer, AquiferCoderConfig) {
       }
     };
   };
+  
+  AquiferCoder.postBuild = function () {
+    var def = new Deferred();
+    
+    setTimeout(function() {
+      console.log('hey hey hey');
+      def.resolve();
+    }, 3000);
+    
+    return def.promise;
+  }
 
   /**
    * Runs sniffers and linters depending on the command being run.
