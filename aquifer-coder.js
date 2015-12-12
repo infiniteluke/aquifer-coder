@@ -65,8 +65,8 @@ module.exports = function(Aquifer, AquiferCoderConfig) {
     
     setTimeout(function() {
       Aquifer.console.log('hey hey hey...','notice');
-      throw new Error('oh noes!');
-      def.resolve();
+      def.reject('oh noes!');
+      // def.resolve();
     }, 3000);
     
     return def.promise;
