@@ -61,6 +61,7 @@ module.exports = function(Aquifer, AquiferCoderConfig) {
   
   AquiferCoder.postBuild = function () {
     var def = new Deferred();
+    Aquifer.console.log('hey...','notice');
     
     setTimeout(function() {
       Aquifer.console.log('hey hey hey...','notice');
