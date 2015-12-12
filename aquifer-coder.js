@@ -63,7 +63,7 @@ module.exports = function(Aquifer, AquiferCoderConfig) {
     var def = new Deferred();
     
     setTimeout(function() {
-      console.log('hey hey hey');
+      Aquifer.console.log('hey hey hey...','notice');
       def.resolve();
     }, 3000);
     
